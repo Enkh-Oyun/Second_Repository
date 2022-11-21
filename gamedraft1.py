@@ -18,18 +18,18 @@ green = (0, 255, 0)
 blue = (50, 153, 213)
 
 # board design
-dis_width = 600
-dis_height = 400
+dis_width = 800
+dis_height = 500
 # board зурж бн
 dis = pygame.display.set_mode((dis_width, dis_height))
 # header title
-pygame.display.set_caption('Snake Game by zombie')
+pygame.display.set_caption('Copied Snake Game')
 # тоглоомны нийт цаг бидэнд могойн хөдөлгөөнийг хугацааны агшин бүрт өөрчлөхөд хэрэг болно .
 clock = pygame.time.Clock()
 # нэг могойн урт
 snake_block = 10
 # хөдөлгөөн
-snake_speed = 15
+snake_speed = 10
 # font design
 font_style = pygame.font.SysFont("bahnschrift", 25)
 score_font = pygame.font.SysFont("comicsansms", 35)
@@ -67,8 +67,10 @@ def gameLoop(snake_speed):
     game_close = False
 
     # эхлэх цэг
-    x1 = dis_width / 2
-    y1 = dis_height / 2
+    x1 = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
+
+    y1 = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0 
+         
     # өөрчлөлтийг илэрхийлэх утгууд
     x1_change = 0
     y1_change = 0
@@ -163,7 +165,7 @@ def gameLoop(snake_speed):
             Length_of_snake += 1
         # могойн хурдныг агшин бүрт өөрчилны delay үүсгэнэ
         if Length_of_snake > 5:
-            snake_speed = 100
+            snake_speed = 50
         clock.tick(snake_speed)
     #  нэг бүтэн үйлдэл хийж дуусна
     pygame.quit()
