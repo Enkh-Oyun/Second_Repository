@@ -85,7 +85,7 @@ def gameLoop(snake_speed):
         # Тоглоом дууссан байвал ажиллах хэсэг
         while game_close == True:
             dis.fill(blue)
-            message("You Lost! Press C-Play Again or Q-Quit", red)
+            message("You Lost! Press H-Play Again or G-Quit", red)
             # толгойн утгыг хасч оноог явуулж байна
             Your_score(Length_of_snake - 1)
             # тоглоомийн бүх зүйлийг шинэчлэх func ыг дуудаж байна
@@ -93,14 +93,14 @@ def gameLoop(snake_speed):
             # гараас ямар нэгэн товч дарвал биелүүлэх кодууд
             for event in pygame.event.get():
                 if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_q:
+                    if event.key == pygame.K_g:
                         # шууд гаргах хэсэг
                         game_over = True
                         # while дуусгах хэсэг
                         game_close = False
-                    if event.key == pygame.K_c:
+                    if event.key == pygame.K_h:
                         #  тоглоомын дахин эхлүүлэх хэсэг
-                        gameLoop()
+                        gameLoop(snake_speed - 5)
         # Тоглоомын удирдах хэсэг
         for event in pygame.event.get():
             # гарах товчийг дарах үед гаргах хэсэг
@@ -165,7 +165,7 @@ def gameLoop(snake_speed):
             Length_of_snake += 1
         # могойн хурдныг агшин бүрт өөрчилны delay үүсгэнэ
         if Length_of_snake > 5:
-            snake_speed = 50
+            snake_speed = 10
         clock.tick(snake_speed)
     #  нэг бүтэн үйлдэл хийж дуусна
     pygame.quit()
